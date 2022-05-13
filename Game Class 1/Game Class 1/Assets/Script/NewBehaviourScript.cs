@@ -19,6 +19,8 @@ public class NewBehaviourScript : MonoBehaviour
     // Start 함수는 게임 시작할 때 한 번만 호출되는 함수입니다.
     void Start()
     {
+
+
         /*
         // 자기 자신의 위치를 설정합니다.
         transform.position += new Vector3
@@ -46,7 +48,38 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Update 함수입니다.");
+            // Vector3.left = (-1, 0, 0);
+
+            // left + 프레임 속도 * 0.016(60 프레임)
+            // left + 프레임 속도 * 0.03(30 프레임)
+            transform.position += Vector3.left * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            // Vector3.left = (1, 0, 0);
+
+            // right + 프레임 속도 * 0.016(60 프레임)
+            // right + 프레임 속도 * 0.03(30 프레임)
+            transform.position += Vector3.right * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            // Vector3.left = (0, 0, 1);
+
+            // forward + 프레임 속도 * 0.016(60 프레임)
+            // forward + 프레임 속도 * 0.03(30 프레임)
+            transform.position += Vector3.forward * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            // Vector3.left = (0, 0, -1);
+
+            // back + 프레임 속도 * 0.016(60 프레임)
+            // back + 프레임 속도 * 0.03(30 프레임)
+            transform.position += Vector3.back * Time.deltaTime;
         }
     }
 }
