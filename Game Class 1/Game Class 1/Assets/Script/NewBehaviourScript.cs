@@ -19,7 +19,8 @@ public class NewBehaviourScript : MonoBehaviour
     // Start 함수는 게임 시작할 때 한 번만 호출되는 함수입니다.
     void Start()
     {
-
+        // 호출할 함수의 이름과 몇 초 후에 함수를 실행할 지 설정하고 몇 초마다 반복할 것인지 정한다.
+        InvokeRepeating("AutoMove", 0, 1);
 
         /*
         // 자기 자신의 위치를 설정합니다.
@@ -33,11 +34,11 @@ public class NewBehaviourScript : MonoBehaviour
 
         Debug.Log("Start 함수입니다.");
 
-        for(int i = 1; i <= x && i <= y; i++)
+        for (int i = 1; i <= x && i <= y; i++)
         {
             if (x % i == 0 && y % i == 0)
             {
-                result = i; 
+                result = i;
             }
         }
 
@@ -45,7 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         if(Input.GetKey(KeyCode.A))
         {
             // Vector3.left = (-1, 0, 0);
@@ -81,5 +82,20 @@ public class NewBehaviourScript : MonoBehaviour
             // back + 프레임 속도 * 0.03(30 프레임)
             transform.position += Vector3.back * Time.deltaTime;
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CancelInvoke("AutoMove");
+        }
+    }
+
+    public void AutoMove()
+    {
+        transform.position = new Vector3
+        (
+            Random.Range(0, 5),
+            0,
+            Random.Range(0, 5)
+        );
     }
 }
